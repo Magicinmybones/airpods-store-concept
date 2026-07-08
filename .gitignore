@@ -1,0 +1,11 @@
+# Local tooling / editor
+.claude/
+.thumbnail
+
+# Working scratch — not part of the deployed site
+uploads/
+screenshots/
+
+# OS junk
+.DS_Store
+Thumbs.db
