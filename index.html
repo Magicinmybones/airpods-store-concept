@@ -71,11 +71,16 @@
   @media (prefers-reduced-motion: reduce) {
     .dc-a, .dc-hero-img, .dc-stagger > *, .dc-stagger2 > * { animation: none !important; }
   }
+
+  /* stack the three screens vertically on narrow / mobile viewports */
+  @media (max-width: 1000px) {
+    .dc-screens { flex-direction: column; }
+  }
 </style>
 </helmet>
 
 <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; box-sizing: border-box; background: #F6E2DE;">
-<div style="display: flex; gap: 28px; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box; font-family: 'Substance', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif; zoom: 0.744;">
+<div class="dc-screens" style="display: flex; gap: 28px; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box; font-family: 'Substance', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif; zoom: 0.744;">
 
   <!-- ============ SCREEN 1 : Hero ============ -->
   <div data-screen-label="Hero" class="dc-a dc-fade" style="width: 390px; height: 844px; border-radius: 44px; box-shadow: 0 30px 60px rgba(190, 120, 110, 0.28); overflow: hidden; position: relative; flex-shrink: 0; background: #F3B7AE;">
