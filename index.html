@@ -76,6 +76,16 @@
   @media (max-width: 1000px) {
     .dc-screens { flex-direction: column; }
   }
+
+  /* ---- iOS device chrome (dynamic island + status bar + home indicator), from bali ---- */
+  .ios-dynamic-island { position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 120px; height: 35px; border-radius: 22px; background: #000; z-index: 50; }
+  .ios-status-bar-wrap { position: absolute; top: 0; left: 0; right: 0; z-index: 40; pointer-events: none; }
+  .ios-status-bar { display: flex; gap: 140px; align-items: center; justify-content: center; padding: 19px 28px 14px; box-sizing: border-box; width: 100%; }
+  .ios-status-bar .ios-time-col { flex: 1; height: 22px; display: flex; align-items: center; justify-content: center; }
+  .ios-status-bar .ios-time-col span { font-family: -apple-system, 'SF Pro Text', system-ui, sans-serif; font-weight: 600; font-size: 16px; line-height: 22px; }
+  .ios-status-bar .ios-icons-col { flex: 1; height: 22px; display: flex; align-items: center; justify-content: center; gap: 7px; }
+  .ios-home-indicator-wrap { position: absolute; bottom: 0; left: 0; right: 0; z-index: 60; height: 30px; display: flex; justify-content: center; align-items: flex-end; padding-bottom: 8px; pointer-events: none; }
+  .ios-home-indicator-bar { width: 134px; height: 5px; border-radius: 100px; }
 </style>
 </helmet>
 
@@ -86,8 +96,21 @@
   <div data-screen-label="Hero" class="dc-a dc-fade" style="width: 390px; height: 844px; border-radius: 44px; box-shadow: 0 30px 60px rgba(190, 120, 110, 0.28); overflow: hidden; position: relative; flex-shrink: 0; background: #F3B7AE;">
     <img src="assets/hero-closeup.png" alt="Airpods Max close-up" class="dc-hero-img" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;">
 
+    <!-- iOS chrome -->
+    <div class="ios-dynamic-island"></div>
+    <div class="ios-status-bar-wrap">
+      <div class="ios-status-bar">
+        <div class="ios-time-col"><span style="color: #fff;">9:41</span></div>
+        <div class="ios-icons-col">
+          <svg width="19" height="12" viewBox="0 0 19 12"><rect x="0" y="7.5" width="3.2" height="4.5" rx="0.7" fill="#fff"></rect><rect x="4.8" y="5" width="3.2" height="7" rx="0.7" fill="#fff"></rect><rect x="9.6" y="2.5" width="3.2" height="9.5" rx="0.7" fill="#fff"></rect><rect x="14.4" y="0" width="3.2" height="12" rx="0.7" fill="#fff"></rect></svg>
+          <svg width="17" height="12" viewBox="0 0 17 12"><path d="M8.5 3.2C10.8 3.2 12.9 4.1 14.4 5.6L15.5 4.5C13.7 2.7 11.2 1.5 8.5 1.5C5.8 1.5 3.3 2.7 1.5 4.5L2.6 5.6C4.1 4.1 6.2 3.2 8.5 3.2Z" fill="#fff"></path><path d="M8.5 6.8C9.9 6.8 11.1 7.3 12 8.2L13.1 7.1C11.8 5.9 10.2 5.1 8.5 5.1C6.8 5.1 5.2 5.9 3.9 7.1L5 8.2C5.9 7.3 7.1 6.8 8.5 6.8Z" fill="#fff"></path><circle cx="8.5" cy="10.5" r="1.5" fill="#fff"></circle></svg>
+          <svg width="27" height="13" viewBox="0 0 27 13"><rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke="#fff" stroke-opacity="0.35" fill="none"></rect><rect x="2" y="2" width="20" height="9" rx="2" fill="#fff"></rect><path d="M25 4.5V8.5C25.8 8.2 26.5 7.2 26.5 6.5C26.5 5.8 25.8 4.8 25 4.5Z" fill="#fff" fill-opacity="0.4"></path></svg>
+        </div>
+      </div>
+    </div>
+
     <!-- new arrivals badge -->
-    <div class="dc-a dc-inleft dc-d3 dc-press" style="position: absolute; top: 36px; left: 24px; background: #ffffff; border-radius: 999px; padding: 12px 20px; font-size: 13px; font-weight: 500; color: #111111; white-space: nowrap; box-shadow: 0 8px 20px rgba(160, 80, 70, 0.18);">20 new arrivals 🔥</div>
+    <div class="dc-a dc-inleft dc-d3 dc-press" style="position: absolute; top: 62px; left: 24px; background: #ffffff; border-radius: 999px; padding: 12px 20px; font-size: 13px; font-weight: 500; color: #111111; white-space: nowrap; box-shadow: 0 8px 20px rgba(160, 80, 70, 0.18);">20 new arrivals 🔥</div>
 
     <!-- play button -->
     <div class="dc-a dc-pop dc-d6 dc-play" style="position: absolute; top: 268px; right: 19px; width: 120px; height: 124px;">
@@ -125,15 +148,28 @@
       <div class="dc-a dc-rise dc-d5" style="font-size: 75px; line-height: 0.95; font-weight: 500; letter-spacing: -1px; color: #ffffff; margin-top: 6px; text-shadow: 0 2px 18px rgba(120, 40, 30, 0.18);">With new sounds</div>
     </div>
 
-    <!-- home indicator -->
-    <div class="dc-a dc-fade dc-d8" style="position: absolute; left: 50%; transform: translateX(-50%); bottom: 18px; width: 120px; height: 5px; border-radius: 999px; background: rgba(255, 255, 255, 0.65);"></div>
+    <!-- iOS home indicator -->
+    <div class="ios-home-indicator-wrap"><div class="ios-home-indicator-bar" style="background: rgba(255,255,255,0.75);"></div></div>
   </div>
 
   <!-- ============ SCREEN 2 : New arrivals ============ -->
   <div data-screen-label="New arrivals" class="dc-a dc-fade dc-d1" style="width: 390px; height: 844px; background: #fdbdb4; border-radius: 44px; box-shadow: 0 30px 60px rgba(190, 120, 110, 0.28); overflow: hidden; position: relative; display: flex; flex-direction: column; flex-shrink: 0;">
 
+    <!-- iOS chrome -->
+    <div class="ios-dynamic-island"></div>
+    <div class="ios-status-bar-wrap">
+      <div class="ios-status-bar">
+        <div class="ios-time-col"><span style="color: #000;">9:41</span></div>
+        <div class="ios-icons-col">
+          <svg width="19" height="12" viewBox="0 0 19 12"><rect x="0" y="7.5" width="3.2" height="4.5" rx="0.7" fill="#000"></rect><rect x="4.8" y="5" width="3.2" height="7" rx="0.7" fill="#000"></rect><rect x="9.6" y="2.5" width="3.2" height="9.5" rx="0.7" fill="#000"></rect><rect x="14.4" y="0" width="3.2" height="12" rx="0.7" fill="#000"></rect></svg>
+          <svg width="17" height="12" viewBox="0 0 17 12"><path d="M8.5 3.2C10.8 3.2 12.9 4.1 14.4 5.6L15.5 4.5C13.7 2.7 11.2 1.5 8.5 1.5C5.8 1.5 3.3 2.7 1.5 4.5L2.6 5.6C4.1 4.1 6.2 3.2 8.5 3.2Z" fill="#000"></path><path d="M8.5 6.8C9.9 6.8 11.1 7.3 12 8.2L13.1 7.1C11.8 5.9 10.2 5.1 8.5 5.1C6.8 5.1 5.2 5.9 3.9 7.1L5 8.2C5.9 7.3 7.1 6.8 8.5 6.8Z" fill="#000"></path><circle cx="8.5" cy="10.5" r="1.5" fill="#000"></circle></svg>
+          <svg width="27" height="13" viewBox="0 0 27 13"><rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke="#000" stroke-opacity="0.35" fill="none"></rect><rect x="2" y="2" width="20" height="9" rx="2" fill="#000"></rect><path d="M25 4.5V8.5C25.8 8.2 26.5 7.2 26.5 6.5C26.5 5.8 25.8 4.8 25 4.5Z" fill="#000" fill-opacity="0.4"></path></svg>
+        </div>
+      </div>
+    </div>
+
     <!-- top bar: search + avatar -->
-    <div class="dc-stagger" style="display: flex; align-items: center; gap: 26px; padding: 50px 24px 20px 24px;">
+    <div class="dc-stagger" style="display: flex; align-items: center; gap: 26px; padding: 62px 24px 20px 24px;">
       <div class="dc-search" style="flex: 1; display: flex; align-items: center; gap: 12px; background: #ffffff; border-radius: 999px; height: 52px; padding: 0 20px; box-sizing: border-box;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>
         <span style="font-size: 15px; font-weight: 400; color: #000000;">search</span>
@@ -191,13 +227,29 @@
         <div style="position: absolute; top: 9px; right: 8px; width: 5px; height: 5px; border-radius: 50%; background: #e2574c;"></div>
       </div>
     </div>
+
+    <!-- iOS home indicator -->
+    <div class="ios-home-indicator-wrap"><div class="ios-home-indicator-bar" style="background: rgba(0,0,0,0.28);"></div></div>
   </div>
 
   <!-- ============ SCREEN 2 : Product detail ============ -->
   <div data-screen-label="Product detail" class="dc-a dc-fade dc-d2" style="width: 390px; height: 844px; background: #fdbdb4; border-radius: 44px; box-shadow: 0 30px 60px rgba(190, 120, 110, 0.28); overflow: hidden; position: relative; display: flex; flex-direction: column; flex-shrink: 0;">
 
+    <!-- iOS chrome -->
+    <div class="ios-dynamic-island"></div>
+    <div class="ios-status-bar-wrap">
+      <div class="ios-status-bar">
+        <div class="ios-time-col"><span style="color: #000;">9:41</span></div>
+        <div class="ios-icons-col">
+          <svg width="19" height="12" viewBox="0 0 19 12"><rect x="0" y="7.5" width="3.2" height="4.5" rx="0.7" fill="#000"></rect><rect x="4.8" y="5" width="3.2" height="7" rx="0.7" fill="#000"></rect><rect x="9.6" y="2.5" width="3.2" height="9.5" rx="0.7" fill="#000"></rect><rect x="14.4" y="0" width="3.2" height="12" rx="0.7" fill="#000"></rect></svg>
+          <svg width="17" height="12" viewBox="0 0 17 12"><path d="M8.5 3.2C10.8 3.2 12.9 4.1 14.4 5.6L15.5 4.5C13.7 2.7 11.2 1.5 8.5 1.5C5.8 1.5 3.3 2.7 1.5 4.5L2.6 5.6C4.1 4.1 6.2 3.2 8.5 3.2Z" fill="#000"></path><path d="M8.5 6.8C9.9 6.8 11.1 7.3 12 8.2L13.1 7.1C11.8 5.9 10.2 5.1 8.5 5.1C6.8 5.1 5.2 5.9 3.9 7.1L5 8.2C5.9 7.3 7.1 6.8 8.5 6.8Z" fill="#000"></path><circle cx="8.5" cy="10.5" r="1.5" fill="#000"></circle></svg>
+          <svg width="27" height="13" viewBox="0 0 27 13"><rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke="#000" stroke-opacity="0.35" fill="none"></rect><rect x="2" y="2" width="20" height="9" rx="2" fill="#000"></rect><path d="M25 4.5V8.5C25.8 8.2 26.5 7.2 26.5 6.5C26.5 5.8 25.8 4.8 25 4.5Z" fill="#000" fill-opacity="0.4"></path></svg>
+        </div>
+      </div>
+    </div>
+
     <!-- top bar -->
-    <div class="dc-stagger" style="display: flex; align-items: center; justify-content: space-between; padding: 38px 28px 0 28px;">
+    <div class="dc-stagger" style="display: flex; align-items: center; justify-content: space-between; padding: 62px 28px 0 28px;">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="#ffffff" class="dc-press"><circle cx="6" cy="6" r="1.6"></circle><circle cx="6" cy="12" r="1.6"></circle><circle cx="6" cy="18" r="1.6"></circle></svg>
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.7" stroke-linecap="round" class="dc-press"><line x1="5" y1="7" x2="19" y2="7"></line><line x1="5" y1="12" x2="14.8" y2="12"></line><line x1="5" y1="17" x2="10.2" y2="17"></line></svg>
     </div>
@@ -237,6 +289,9 @@
         </div>
       </div>
     </div>
+
+    <!-- iOS home indicator -->
+    <div class="ios-home-indicator-wrap"><div class="ios-home-indicator-bar" style="background: rgba(0,0,0,0.28);"></div></div>
   </div>
 
 </div>
